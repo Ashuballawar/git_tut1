@@ -1,0 +1,33 @@
+newdiv=document.createElement('div');
+// console.log(newdiv);
+// newdiv.className='hello';
+// console.log(newdiv);
+newdiv.id='hello1';
+// console.log(newdiv);
+newdiv.setAttribute('title','Hello Div');
+//console.log(newdiv);
+//vreate text node
+newdivtext=document.createTextNode('hello world');
+//add text to div
+newdiv.appendChild(newdivtext);
+console.log(newdiv);
+container=document.querySelector('header .container');
+h1=document.querySelector('header h1');
+
+container.insertBefore(newdiv,h1);
+ul=document.querySelector('ul');
+newspan=document.createElement('span');
+newspan.id='beforeli';
+newspan.setAttribute=('title','bli');
+newspantext=document.createTextNode('hello li');
+newspan.appendChild(newspantext);
+li=document.querySelector('li');
+ul.insertBefore(newspan,li);
+
+
+
+
+
+
+
+
