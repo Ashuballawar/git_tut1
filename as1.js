@@ -30,6 +30,7 @@
 //box.style.border='solid 3px black';
 title=document.getElementById('additem');
 title.style.fontWeight='bold';
-title.style.color='green';
+title.style.color='green';  
+
 
 
