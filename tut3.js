@@ -129,12 +129,7 @@ newspan.appendChild(newspantext);
 li=document.querySelector('li');
 ul.insertBefore(newspan,li);
 
-img=document.createElement='img';
 
-img.setAttribute=('url','berry.jpg');
-
-body=querySelector('body');
-body.appendChild(img);
 
 
 
