@@ -1,47 +1,5 @@
 
  
-// namedetail=document.getElementById('name');
-
-//form.addEventListener('submit',e=>{
-//     if(!e.checkValidity()){
-//         e.preventDefault()}
-//         form.classList.add('was validated');
-       
-//     }
-// )
-// function localstorage(e){
-//     e.preventDefault();
-//      namedetail=document.getElementById('name');
-//      emaildetail=document.getElementById('email');
-//      phonedetail=document.getElementById('phone');
-//      datedetail=document.getElementById('date');
-//      timeedetail=document.getElementById('time');
-//      namedetailtext=namedetail.value;
-//      emaildetailtext= emaildetail.value;
-//      phonedetailtext= phonedetail.value;
-//      datedetailtext= datedetail.value;
-//      timeedetailtext=timeedetail.value;
-//      localStorage.setItem('namedetail', namedetailtext);
-//      localStorage.setItem('emaildetail',  emaildetailtext);
-//      localStorage.setItem('phonedetail', phonedetailtext);
-//      localStorage.setItem('datedetail',datedetailtext);
-//      localStorage.setItem('timedetail', timeedetailtext);
-   
-// }
-// function localstorage(e){
-//     //e.preventDefault();
-//     name1=e.target.name.value; 
-//     email=e.target.email.value;
-//    phone=e.target.phone.value;
-//    date=e.target.date.value;
-//    time=e.target.time.value;
-//    localStorage.setItem('namedetail', name1);
-//    localStorage.setItem('emaildetail', email);
-//    localStorage.setItem('phonedetail', phone);
-//    localStorage.setItem('datedetail',date);
-//    localStorage.setItem('timedetail',  time);
-// }
-
 const form=document.querySelector("form");
 body=document.querySelector('body');
 namedetail=document.getElementById('name');
@@ -112,6 +70,7 @@ ul.addEventListener('click',edititem);
           
                reverse=res.data;
         })
+        .catch(err=>console.log(err));
        await axios.delete(`https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData/${li.id}`)
        // reverse=JSON.parse(localStorage.getItem(li.id));
      
@@ -164,13 +123,13 @@ function printuser(presonal){
  ul.appendChild(li);
 //ul.innerHTML=`<li id=${reverse.email}>${reverse.name} ${reverse.email} ${reverse.phone} ${reverse.date} ${reverse.time}</li>`;
 }
-footer=document.createElement('footer');
-body.appendChild(footer);
-h=document.createElement('h6');
-footer.appendChild(h);
-h.appendChild(document.createTextNode('old user'));
-ulf=document.createElement('ul');
-footer.appendChild(ulf);
+// footer=document.createElement('footer');
+// body.appendChild(footer);
+// h=document.createElement('h6');
+// footer.appendChild(h);
+// h.appendChild(document.createTextNode('old user'));
+// ulf=document.createElement('ul');
+// footer.appendChild(ulf);
 
 
 
@@ -183,11 +142,13 @@ async function reload(e){
   await axios.get("https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData")
   .then(res=>{
     totalemp=res.data;
-  })
+  }).catch(err=>console.log(err));
+  
 totalemp.forEach(element => {   
-    lif=document.createElement('li');
-   lif.appendChild(document.createTextNode( element.name+" "+element.email+" "+element.phone+'\n'));
-   ulf.appendChild(lif);
+  // lif=document.createElement('li');
+       printuser(element);
+  // lif.appendChild(document.createTextNode( element.name+" "+element.email+" "+element.phone+'\n'));
+  // ulf.appendChild(lif);
 });
 
 
