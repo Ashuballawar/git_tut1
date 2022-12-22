@@ -64,30 +64,53 @@ ul.addEventListener('click',edititem);
     e.preventDefault();
     if(e.target.classList.contains('edit')){
         li=e.target.parentElement;
+        name1=document.getElementById('name');
+        email=document.getElementById('email');
+        phone=document.getElementById('phone');
+        date=document.getElementById('date');
+       time=document.getElementById('time');
+       
+      name1.value=reverse.name;
+     email.value=reverse.email;
+      phone.value=reverse.phone;
+      date.value=reverse.date;
+     time.value=reverse.time;
+     form.addEventListener('submit',editsubmit);
+     async function editsubmit(e){
+      e.preventDefault();
+     
         let reverse;
-        await axios.get(`https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData/${li.id}`)
+        await axios.put(`https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData/${li.id}`,
+        { name:e.target.name.value,
+        email:e.target.email.value,
+       phone:e.target.phone.value,
+       date:e.target.date.value,
+       time:e.target.time.value,})
         .then(res=>{
           
                reverse=res.data;
         })
         .catch(err=>console.log(err));
-       await axios.delete(`https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData/${li.id}`)
+      //  await axios.delete(`https://crudcrud.com/api/dfcb991ad441414288ce59ffe426dac1/appointmentData/${li.id}`)
        // reverse=JSON.parse(localStorage.getItem(li.id));
      
-        name1=document.getElementById('name');
-         email=document.getElementById('email');
-         phone=document.getElementById('phone');
-         date=document.getElementById('date');
-        time=document.getElementById('time');
+      //   name1=document.getElementById('name');
+      //    email=document.getElementById('email');
+      //    phone=document.getElementById('phone');
+      //    date=document.getElementById('date');
+      //   time=document.getElementById('time');
         
-       name1.value=reverse.name;
-      email.value=reverse.email;
-       phone.value=reverse.phone;
-       date.value=reverse.date;
-      time.value=reverse.time;
-        ul.removeChild(li);
+      //  name1.value=reverse.name;
+      // email.value=reverse.email;
+      //  phone.value=reverse.phone;
+      //  date.value=reverse.date;
+      // time.value=reverse.time;
+     
+
+
+      //  ul.removeChild(li);
       //  localStorage.removeItem(li.id);
-}}
+}}}
 
 //printing user detail
 function printuser(presonal){
