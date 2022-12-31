@@ -26,7 +26,7 @@ console.log('person2: show ticket');
 // gebutter.then((t)=>console.log(t));
 const preMovie=async()=>{
     const promisewifebringingticket= new Promise((resolve, reject) => {
-        setTimeout(()=>resolve('ticket'),3000);
+        setTimeout(()=>reject(),3000);
     });
     let getpopcorn=new Promise((resolve,reject)=>resolve('popcorn'));
     let addbutter=new Promise((resolve, reject) => {
@@ -35,7 +35,12 @@ const preMovie=async()=>{
     let getdrink=new Promise((resolve, reject) => {
         resolve('coke');
     })
-    let ticket=await promisewifebringingticket;
+    let ticket
+   try{ ticket=await promisewifebringingticket;}
+   catch{
+            ticket='sad face'
+   }
+
     // console.log(`wife:I have the ${ticket}`);
     // console.log('husband: we should go in');
     // console.log('wife:no i am hungry');

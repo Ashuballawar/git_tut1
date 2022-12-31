@@ -1,6 +1,6 @@
 const posts=[
-    {title:'Post One', body:'This is post one',Lastactivity:new Date()},
-    {title:'Post two', body:'This is post two',Lastactivity:new Date()}
+    {title:'Post One', body:'This is post one'},
+    {title:'Post two', body:'This is post two'}
 ]
 u=document.createElement('u1');
 body=document.querySelector('body');
@@ -12,14 +12,14 @@ function getPosts(){
         let output="";
    posts.forEach(post => {
              console.log(post.title);
-      output+=`<li>${post.title}--Lastactivity:${post.Lastactivity}  </li>`
+      output+=`<li>${post.title} </li>`
    });
  //  u.appendChild(output);
    document.body.innerHTML=output;
     
 },1000)
-
-}
+     
+     }
 
 function createPost(post){
    return new Promise((resolve, reject)=>{
@@ -27,7 +27,7 @@ function createPost(post){
         posts.push(post);
         const error=false;
         if(!error){
-            resolve();       
+            resolve('post created');       
         }
         
         
@@ -38,42 +38,44 @@ function createPost(post){
     });
 }
 
-let promise1=Promise.resolve('hello world');
+//let promise1=Promise.resolve('hello world');
 //let promise2=10;
-let promise3=new Promise((resolve,reject)=>
-setTimeout(resolve,2000,'Goodbye'));
+//let promise3=new Promise((resolve,reject)=>
+//setTimeout(resolve,2000,'Goodbye'));
 // let promise=new Promise(resolve=>setTimeout(resolve,1000,`updateLastUserActivityTime-${new Date()}`))
  let promise=function(){
      return new Promise((resolve, reject) => {     
            
          setTimeout(()=>{
-          //  let output=''+`updateLastUserActivityTime-${new Date()}`;
+       // document.body.innerHTML+=''+`updateLastUserActivityTime-${new Date()}`;
          
           
-          console.log(`Last Upadate activity:${new Date()}`);
+          //console.log(`Last Upadate activity:${new Date()}`);
          
-             resolve();
+             resolve(`Last Upadate activity:${new Date()}`);
          },1000)
                       
                     
        
-     })
+       })
  }
 //Promise.all([promise1,promise3,promise()]).then(values=>console.log(values)).catch(err=>console.log(err));
 
-Promise.all([createPost({title:'Post Three', body:'This is post three',Lastactivity:new Date()}),promise()])
-.then(()=>{
+Promise.all([createPost({title:'Post Three', body:'This is post three'}),promise()])
+.then(([res1,res2])=>{
+
+   console.log(res1,res2)
     getPosts();
-      deletepost()}).then(()=>{
+      deletepost().then(()=>{
         getPosts();
-      })
+      })})
 
       function deletepost(){
         return new Promise((resolve, reject) => {
             setTimeout(()=>{
                 if(posts.length>0){
-                  
-                    resolve(posts.pop());
+                    posts.pop()
+                    resolve();
                 }
                 else{
                     reject("Array is empty")

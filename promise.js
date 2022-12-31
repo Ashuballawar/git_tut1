@@ -43,8 +43,23 @@ createPost({title:'Post Three', body:'This is post three'})
         deletepost().then(()=>{
            getPosts();
             deletepost().then(()=>{
-                getPosts();
-                deletepost().then(()=>{
+                getPosts() 
+                createPost({title:'Post four', body:'This is post three'})
+                .then(()=>{
+                   getPosts() 
+                   deletepost().then(()=>{
+                    getPosts() 
+                    deletepost().then(()=>{
+                        getPosts() 
+                    }).catch((err)=>{
+                        console.log('Inside catch block',err)
+                    })
+
+                }).catch((err)=>{
+                    console.log('Inside catch block',err)
+                })
+               
+                    
 
                 }).catch((err)=>{
                     console.log('Inside catch block',err)
@@ -57,9 +72,7 @@ createPost({title:'Post Three', body:'This is post three'})
         })
     }).catch((err)=>{
         console.log('Inside catch block',err)
-    })
-    
-       
+    })      
 
     }).catch((err)=>{
         console.log('Inside catch block',err)

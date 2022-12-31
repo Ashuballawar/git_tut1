@@ -4,7 +4,7 @@ const posts=[
 ]
 let interval=0;
 function getPosts(){
-  
+    
     interval=setInterval(()=>{
        
         let output="";
@@ -15,8 +15,8 @@ function getPosts(){
    document.body.innerHTML=output;
     console.log(interval)
 },1000)
-clearInterval(interval);
 
+clearInterval(interval);
 }
 //getPosts();
 function createPost(post,callback){
@@ -45,15 +45,15 @@ let counter=0
 
 function lastmodification(){
     let counter=0;
-
+    
 timer=setInterval(()=>{
-   
+    
     counter++;
     
    
-    document.body.innerHTML=`<h6>Last Edited ${counter} seconds ago</h6>`;
+    document.body.innerHTML+=`<li>Last Edited ${counter} seconds ago</li>`;
 
-},1000)
+},5000)
 clearInterval(timer);
 }
 lastmodification();

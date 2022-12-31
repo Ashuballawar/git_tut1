@@ -4,7 +4,9 @@ const posts=[
 ]
 
 function getPosts(){
-  
+  return new Promise((resolve, reject) => {
+    
+ 
     setTimeout(()=>{
        
         let output="";
@@ -17,7 +19,7 @@ function getPosts(){
     
 },1000)
 
-
+resolve()})
 }
 
  async function createPost(post){
@@ -38,19 +40,15 @@ function getPosts(){
          }
             
      },5000)});
-    await new Promise((resolve, reject) => {
-        setTimeout(()=>{
-            deletepost();
-            resolve();
+    await deletepost();
+            
           
        
        
-    },10000)});
-    await new Promise((resolve, reject) => {
-       setTimeout(()=>{
-        getPosts();
-        resolve();
-    },1000)});
+   
+    await getPosts();
+       
+   
 
  }
 
