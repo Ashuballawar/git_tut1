@@ -17,6 +17,14 @@ async function login(e){
  
    if(response.status==201){
     alert('login successful')
+    console.log(response.data.token)
+    localStorage.setItem('token',response.data.token)
+   
+    if(response.data.ispremiuruser){
+      window.location.href="./premiermember.html"
+    }
+    else{
+    window.location.href="./exp.html"}
  }
   else{
     throw new Error('login Failed')
